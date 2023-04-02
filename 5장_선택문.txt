@@ -1,0 +1,58 @@
+05 선택문
+
+
+if문
+
+#include <stdio.h>
+
+int main()
+{
+if(0) //거짓, 출력 안함
+printf("0");
+
+if(1) //참
+printf("1");
+}
+
+>>1만 출력
+
+
+
+복합문_명령문 여러 개 출력할 경우 
+
+#include <stdio.h>
+
+int main()
+{
+if(0)
+{
+printf("1\r\n");
+printf("2\r\n");
+}
+
+printf("3");
+}
+
+>>3
+
+
+switch문_일치하는 값부터 계속 실행
+
+#include <stdio.h>
+
+int main()
+{
+switch(2)
+{
+case 1: printf("1"); break;
+case 2: printf("2"); break; //break 실행 후 swich문 탈출
+case 3: printf("3"); break;
+default: printf("D");
+}
+}
+
+
+
+
+
+
