@@ -1,0 +1,185 @@
+#include <stdio.h>
+#include <stdbool.h> // bool 타입을 사용하기 위해 포함
+
+#define MAX 100 // 리스트의 최대 100으로로 정의
+
+// 리스트 구조체 정의
+typedef struct {
+    int Count; 
+    int Data[MAX];
+} listType;
+
+// 함수 선언
+void Insert(listType* Lptr, int Position, int Item); 
+void Delete(listType* Lptr, int Position);
+void Retrieve(listType* Lptr, int Position, int* ItemPtr); 
+void Init(listType* Lptr); 
+bool IsEmpty(listType* Lptr); 
+int Length(listType* Lptr); 
+
+int main()
+{
+    return 0;
+}
+
+// 함수 구현
+void Insert(listType* Lptr, int Position, int Item)
+{
+    // 리스트가 꽉 차있으면 삽입 불가
+    if (Lptr->Count >= MAX) {
+        printf("Error: List is full.\n");
+        return;
+    }
+    // 인덱스 범위를 벗어나면 삽입 불가
+    if (Position < 0 || Position > Lptr->Count) {
+        printf("Error: Index out of range.\n");
+        return;
+    }
+    // 새로운 데이터를 삽입하기 위해 데이터들을 뒤로 한 칸씩 뒤로 이동
+    for (int i = Lptr->Count; i > Position; i--) {
+        Lptr->Data[i] = Lptr->Data[i - 1];
+    }
+    // 새로운 데이터를 삽입
+    Lptr->Data[Position] = Item;
+    Lptr->Count++; // 리스트에 저장된 데이터의 개수 증가
+}
+
+// 리스트에서 데이터를 삭제
+void Delete(listType* Lptr, int Position)
+{
+    // 인덱스 범위를 벗어나면 삭제 불가
+    if (Position < 0 || Position >= Lptr->Count) {
+        printf("Error: Index out of range.\n");
+        return;
+    }
+    // 삭제하기 위해 데이터들을 한 칸씩 앞으로 이동
+    for (int i = Position; i < Lptr->Count - 1; i++) {
+        Lptr->Data[i] = Lptr->Data[i + 1];
+    }
+    Lptr->Count--; // 리스트에 저장된 데이터의 개수 감소
+}
+
+// 리스트에서 특정 위치에 저장된 데이터를 반환
+void Retrieve(listType* Lptr, int Position, int* ItemPtr)
+{
+    // 인덱스 범위를 벗어나면 반환 불가
+    if (Position < 0 || Position >= Lptr->Count) {
+        printf("Error: Index out of range.\n");
+        return;
+    }
+    // ItemPtr 포인터를 통해 반환할 값을 전달
+    *ItemPtr = Lptr->Data[Position];
+}
+
+// 리스트를 초기화
+void Init(listType* Lptr)
+{
+    Lptr->Count = 0; // 리스트에 저장된 데이터의 개수를 0으로 초기화
+}
+
+// 리스트가 비어있는지 검사
+bool IsEmpty(listType* Lptr)
+{
+    return Lptr->Count == 0;
+}
+
+// 리스트에 저장된 데이터의 개수를 반환
+int Length(listType* Lptr)
+{
+    return Lptr->Count;
+}
+
+--------------------------------------------------------------
+수정ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
+
+#include <stdio.h>
+#include <stdbool.h> // bool 타입을 사용하기 위해 포함
+
+#define MAX 100 // 리스트의 최대 100으로로 정의
+
+// 리스트 구조체 정의
+typedef struct {
+    int Count; 
+    int Data[MAX];
+} listType;
+
+// 함수 선언
+void Insert(listType* Lptr, int Position, int Item); 
+void Delete(listType* Lptr, int Position);
+void Retrieve(listType* Lptr, int Position, int* ItemPtr); 
+void Init(listType* Lptr); 
+bool IsEmpty(listType* Lptr); 
+int Length(listType* Lptr); 
+
+int main()
+{
+    return 0;
+}
+
+// 함수 구현
+void Insert(listType* Lptr, int Position, int Item)
+{
+    // 리스트가 꽉 차있으면 삽입 불가
+    if (Lptr->Count == MAX) {
+        printf("List full.\n");
+        return;
+    }
+    //삽입위치 불허
+    else if ((Position > (Lptr->Count + 1)) || (Position < 1))
+        printf("Position out of Range");
+    // 새로운 데이터를 삽입하기 위해 데이터들을 뒤로 한 칸씩 뒤로 이동
+    else
+    {
+        for (int i = Lptr->Count; i > Position; i--) {
+            Lptr->Data[i] = Lptr->Data[i - 1];
+        }
+        // 새로운 데이터를 삽입
+        Lptr->Data[Position] = Item;
+        Lptr->Count++; // 리스트에 저장된 데이터의 개수 증가
+    }
+}
+
+// 리스트에서 데이터를 삭제
+void Delete(listType* Lptr, int Position)
+{
+    // 인덱스 범위를 벗어나면 삭제 불가
+    if (Position < 0 || Position >= Lptr->Count) {
+        printf("Index out of range.\n");
+        return;
+    }
+    // 삭제하기 위해 데이터들을 한 칸씩 앞으로 이동
+    for (int i = Position; i < Lptr->Count - 1; i++) {
+        Lptr->Data[i] = Lptr->Data[i + 1];
+    }
+    Lptr->Count--; // 리스트에 저장된 데이터의 개수 감소
+}
+
+// 리스트에서 특정 위치에 저장된 데이터를 반환
+void Retrieve(listType* Lptr, int Position, int* ItemPtr)
+{
+    // 인덱스 범위를 벗어나면 반환 불가
+    if (Position < 0 || Position >= Lptr->Count) {
+        printf("Index out of range.\n");
+        return;
+    }
+    // ItemPtr 포인터를 통해 반환할 값을 전달
+    *ItemPtr = Lptr->Data[Position];
+}
+
+// 리스트를 초기화
+void Init(listType* Lptr)
+{
+    Lptr->Count = 0; // 리스트에 저장된 데이터의 개수를 0으로 초기화
+}
+
+// 리스트가 비어있는지 검사
+bool IsEmpty(listType* Lptr)
+{
+    return Lptr->Count == 0;
+}
+
+// 리스트에 저장된 데이터의 개수를 반환
+int Length(listType* Lptr)
+{
+    return Lptr->Count;
+}
