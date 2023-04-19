@@ -20,3 +20,22 @@ int main()
 	printf("두 수의 차는 %d입니다.\r\n", a - b);
 
 }
+
+
+--------------------------------------------
+79페이지 연습문제 13번
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+
+int main()
+{
+	int age;
+		int a;
+
+	printf("출생연도를 입력하시오.\r\n");
+	scanf("%d", &a);
+	printf("2002 한일 월드컵 당시 한국 나이는 %d입니다.\r\n", age = 2002 - a + 1);
+
+}
