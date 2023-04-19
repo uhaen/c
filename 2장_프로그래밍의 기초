@@ -1,0 +1,22 @@
+76페이지 연습문제
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+
+int main()
+{
+	int a, b;
+	printf("두 정수를 공백으로 구분하여 입력하시오.\r\n");
+	scanf("%d %d", &a, &b);
+
+	int multiply = a * b;
+	printf("두 수의 곱은 %d입니다.\r\n", a * b);
+
+	int add = a + b;
+	printf("두 수의 합은 %d입니다.\r\n", a + b);
+
+	int subtract = a - b;
+	printf("두 수의 차는 %d입니다.\r\n", a - b);
+
+}
