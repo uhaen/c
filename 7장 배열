@@ -1,0 +1,135 @@
+240페이지
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main()
+{
+	char alphabets[26];
+
+	for (int a = 0; a <26; a++)
+	{
+
+		alphabets[a] = 'A' + a;
+	}
+	return 0;
+}
+
+
+---------------------
+247페이지
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main()
+{
+	int prime[] = { 1, 2, 3, 5, 7, 11, 13, 17, 19 };
+	int a;
+
+	do
+	{
+		printf("20이하의 정수를 입력하세요.\r\n");
+		scanf("%d", &a);
+	} 
+	while (a > 20);
+
+	for(int i = 0; i < 8; i++)
+	{
+		if (a == prime[i])
+		{
+			printf("소수입니다.");
+			return 0;
+		}
+	}
+	printf("소수가 아닙니다.");
+}
+
+
+------------------------------------
+252페이지
+
+#include <stdio.h>
+
+int main()
+{
+	int a, b;
+
+	printf("구구단의 단과 항을 공백으로 구부하여 입력하세요.\r\n");
+	scanf("%d %d", &a, &b);
+		
+	int table[8][9] = { {0} };
+	for (int i = 2; i < 10; i++)
+		for (int j = 1; j < 10; j++)
+			table[i - 2][j - 1] = i * j;
+
+	printf("%d * %d = %d", a, b, table[a - 2][b - 1]
+  }
+  
+  
+  ---------------------------------------
+  260페이지
+  
+  #include <stdio.h>
+
+int main()
+{
+	char str[64];
+	char str1[] = "난생처음";
+	char str2[] = "C프로그래밍";
+
+	printf("%s %s", str1, str2);
+}
+
+
+-------------------------------------
+264 연습문제 합구하기
+
+#include <stdio.h>
+
+int main()
+{
+	int arr[] = { 3,5,1,0,9,8,2,6,4,7 };
+	int sum = 0;
+	int i;
+
+	for (i = 0; i < sizeof(arr) / sizeof(int); i++)
+	{
+		sum += i;
+	}
+	
+	printf("Sum = %d", sum);
+}
+
+
+----------------------------------------------
+264페이지 연습문제 최솟값과 최댓값구하기
+
+#include <stdio.h>
+
+int main()
+{
+    int arr[] = { 3, 5, 1, 0, 9, 8, 2, 6, 4, 7 };
+    int min = arr[0];
+    int max = arr[0];
+    int size = sizeof(arr) / sizeof(arr[0]); // 배열의 크기 계산
+
+    for (int i = 1; i < size; i++)
+    {
+        if (arr[i] < min)
+        {
+            min = arr[i];
+        }
+        if (arr[i] > max)
+        {
+            max = arr[i];
+        }
+    }
+
+    printf("Min : %d, Max : %d", min, max);
+
+}
+
+
+-------------------------------------------------------
+
