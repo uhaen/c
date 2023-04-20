@@ -122,6 +122,22 @@ int main()
 }
 
 
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <Stdio.h>
+
+
+int main()
+{
+	int a;
+	int b;
+	printf("두 정수를 공백으로 구분하여 입력하세요.\r\n");
+
+	scanf("%d%d", &a, &b);
+	printf(a < b ? "%d < %d" : a == b ? "%d=%d" : "%d>%d", a, b);
+}
+
+
 -----------------------------------
 164페이지 연습문제 16번, 삼항연산자를 이용하여 정수의 짝수, 홀수 여부를 출력하는 프로그램을 작성하시오.
 
