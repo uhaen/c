@@ -13,3 +13,40 @@ int main()
 
     printf("오차: %d", i1 - i2);
 }
+
+
+---------------------------------------------
+107페이지 원의 둘레와 넓이 구하기
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+
+int main()
+{
+	double a;
+	printf("반지름을 입력하세요\r\n");
+	scanf("%lf", &a);
+	printf("둘레:%lf, 넓이 : %lf", 2 * 3.141592 * a, 3.141592 * a * a);
+
+}
+
+
+----------------------------------------
+112페이
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+
+int main()
+{
+	char upper, lower;
+
+	printf("알파벳 대문자를 입력하세요.\r\n");
+	scanf("%c", &upper);
+	lower = 'a' + upper - 'A';
+
+	printf("소문자 : %c", lower);
+
+}
