@@ -1,0 +1,58 @@
+279페이지 랩 1, 곱셈함수와 나눗셈함수(곱셈은 int, 나눗셈은 double)
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <Stdio.h>
+
+int Mul(int a, int b)
+{
+	return a * b;
+}
+double Div(int a, int b)
+{
+	if(!b)
+	{
+		return 0.0;
+	}
+	else
+	{
+		return (double)a / b;
+	}
+}
+int main()
+{
+	int a, b;
+	
+	printf("두 정수를 공백으로 구분하여 입력하세요.\r\n");
+	scanf("%d %d", &a, &b);
+	printf("%d * %d = %d\r\n", a, b, Mul(a,b));
+	printf("%d / %d = %f", a, b, Div(a,b));
+}
+
+
+----------------------------------------------------------------------
+288페이지 랩2, 배열 요소 거꾸로 재배치
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <Stdio.h>
+
+void Reverse(int arr[10])
+{
+	for (int a = 0; a < 5; a++)
+	{
+		int temp = arr[a];
+		arr[a] = arr[9 - a];
+		arr[9 - a] = temp;
+	}
+}
+int main()
+{
+	int arr[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+	Reverse(arr);
+	for (int a = 0; a < 10; a++)
+	printf("%d", arr[a]);
+}
+
+
+-------------------------------------------------
+kkk
+얼랄다롸돌
