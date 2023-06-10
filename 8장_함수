@@ -54,5 +54,23 @@ int main()
 
 
 -------------------------------------------------
-kkk
-얼랄다롸돌
+재귀함수로 팩토리얼값구하기
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int recursiveFactorial(int N)
+{
+	if (N == 0)
+		return 1;
+	return N * recursiveFactorial(N - 1);
+}
+
+int main()
+{
+	int N;
+	printf("Enter a number: ");
+	scanf("%d", &N);
+	printf("Factorial: %d\n", recursiveFactorial(N));
+	return 0;
+}
