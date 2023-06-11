@@ -1,0 +1,122 @@
+12-6(446페이지)
+패스트푸드 메뉴 주문하기 - 햄버거, 피자, 치킨, 스카게티 중에 하나를 주문. Order함수로
+
+
+#include <stdio.h>
+#define _CRT_SECURE_NO_WARNINGS
+
+typedef enum
+{
+	hamburger,
+	pizza,
+	chicken,
+	spaghetti
+}Menu;
+
+void order(Menu m)
+{
+	switch (m)
+	{
+	case hamburger:
+		printf("hamburger"); break;
+	case pizza:
+		printf("pizza"); break;
+	case chicken:
+		printf("chicken"); break;
+	case spaghetti:
+		printf("spaghetti"); break;
+	}
+
+}
+int main()
+{
+	order(hamburger);
+}
+
+
+--------------------------------- 
+
+실전예쩨(448페이지)
+인구조사프로그램
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <malloc.h>
+
+typedef enum
+{
+	Male = 1,
+	Female =2
+}Gender;
+
+typedef struct
+{
+	int serial;
+	char enabled;
+	char name[9];
+	Gender gender;
+	int age;
+	int salary;
+} PersonInfo;
+
+PersonInfo** PI;
+int Index;
+int Size = 4;
+int Serial;
+PersonInfo* Arr[1024];
+
+void Register(PersonInfo* pPerson)
+{
+	if (!PI)
+		PI = malloc(sizeof(PersonInfo*) * Size);
+	pPerson->serial = Serial++;
+	pPerson->enabled = 1;
+	if (Index > Size)
+	{
+		Size += 4;
+		PI = realloc(PI, sizeof(PersonInfo*) * Size);
+	}
+	Arr[Index++] = pPerson;
+}
+void showstatistics()
+{
+	int totalage = 0;
+	int totalsalary = 0;
+	for (int i = 0; i < Index; i++)
+	{
+		totalage += PI[i]->age;
+		totalsalary += PI[i]->salary;
+	}
+	printf("평균나이:%f\r\n", (double)totalage/Index);
+	printf("평균연소득:%f", (double)totalsalary / Index);
+}
+
+int main()
+{
+	int a;
+	do
+	{
+		printf("1: 개인정보 입력, 2: 통계처리 중 하나를 선택하세요");
+		scanf("%d", &a);
+
+		if (a == 1)
+		{
+			PersonInfo* p = malloc(sizeof(PersonInfo));
+			printf("성별 (1: 남성, 2: 여성)을 입력하세요");
+			scanf("%c", &p->gender);
+
+			printf("이름을 입력하세요");
+			scanf("%s", p->name);
+
+			printf("나이를 입력하세요.");
+			scanf("%d", &p->age);
+
+			printf("연소득(만원)을 입력하세요");
+			scanf("%d", &p->salary);
+
+			Register(p);
+		}
+	}while (a == 1);
+	showstatistics();
+
+}
