@@ -1,0 +1,291 @@
+9-2(314페이지) 
+같은 이름이지만 서로 다른 제어 변수를 사용하여 이중 for문으로 구구단 출력(좋은 코딩이 아니래서 걍 구구단 프로그램만)
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main()
+{
+	int a, b;
+	printf("수를 입력하시오:");
+	scanf("%d%d", &a, &b);
+	printf("값:%d", a * b);
+}
+
+
+-----------------------------------------------------------------
+9-3(320페이지)
+입출금처리 프로그램-양수는 입금, 음수는 출금, 0이면 프로그램 종료
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int sum = 0;  // 잔고를 저장하기 위한 변수
+
+void deposit(int amount)
+{
+	sum += amount;  // 입금
+}
+
+void withdraw(int amount)
+{
+	sum -= amount;  // 출금
+}
+
+int main()
+{
+	int a;
+	while (1) {
+
+		printf("수를 입력하시오: ");
+		scanf("%d", &a);
+
+		if (a == 0)
+		{
+			break;
+		}
+		else if (a > 0)
+		{
+			deposit(a);  // 입금 함수 호출
+			printf("입금: %d, 잔고: %d\n", a, sum);
+		}
+		else if (a < 0)
+		{
+			withdraw(-a);  // 출금 함수 호출
+			printf("출금: %d, 잔고: %d\n", -a, sum);
+		
+        }
+	}
+	return 0;
+}
+
+-----------------------------------------------------------
+9-4(327페이지) 
+입출금 처리 프로그램(+총입출금액도 보여주기)
+
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int amount = 0;  // 잔고를 저장하기 위한 변수
+int totaldeposit = 0;
+int totalwithdraw = 0;
+
+void deposit(int a)
+{
+	totaldeposit += a;
+	amount += a;
+	printf("입금: %d, 총입금액:%d, 잔고:%d\r\n", a, totaldeposit, amount);
+}
+void withdraw(int a)
+{
+	totalwithdraw += a;
+	amount -= a;
+
+	printf("출금: %d, 총출금액:%d, 잔고:%d\r\n", a, totalwithdraw, amount);
+}
+int main()
+{
+	int a;
+
+	printf("입출금액을 입력하시오");
+	scanf("%d", &a);
+	while (1)
+	{
+		if (a == 0)
+		{
+			break;
+		}
+		else if (a > 0)
+		{
+			deposit(a);
+
+		}
+		else if (a < 0)
+		{
+			withdraw(-a);
+		}
+		printf("입출금액을 입력하시오");
+		scanf("%d", &a);
+	}
+	return 0;
+
+}
+
+
+
+
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int amount = 0;  // 잔고를 저장하기 위한 변수
+int totaldeposit = 0;//전역변수로 선언해서 누적된 값을 보여줌
+int totalwithdraw = 0;
+
+
+void deposit(int a)
+{
+
+	totaldeposit += a;
+	amount += a;
+	printf("입금: %d, 총입금액:%d, 잔고:%d\r\n", a, totaldeposit, amount);
+}
+void withdraw(int a)
+{
+
+	totalwithdraw += a;
+	amount -= a;
+
+	printf("출금: %d, 총출금액:%d, 잔고:%d\r\n", a, totalwithdraw, amount);
+}
+int main()
+{
+	int a;
+
+
+	while (1)
+	{
+		printf("입출금액을 입력하시오");
+		scanf("%d", &a);
+
+		if (a > 0)
+		{
+			deposit(a);
+		}
+		else if (a < 0)
+		{
+			withdraw(-a);
+		}
+		else
+			break;
+	
+	}
+
+}
+
+
+-------------------------------------------------------
+9-5(332페이지)
+덧셈이 누적되는 프로그램
+
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int sum; 
+int index;
+int arr[1024];
+
+
+void add(int a)
+{
+	sum += a;
+	arr[index] = a;
+	index++;
+
+	printf("%d", arr[0]);
+	for (int i = 1; i <= index; i++)
+	{
+		if (arr[i] > 0)
+		{
+			printf("+ %d", arr[i]);
+		}
+		if (arr[i] < 0)
+		{
+			printf(" %d", arr[i]);
+		}
+	}
+
+	printf("= %d\r\n", sum);
+
+}
+int main()
+{
+	int a;
+
+
+	while (1)
+	{
+		printf("더할수를 입력하시오");
+		scanf("%d", &a);
+
+		if (a != 0)
+		{
+			add(a);
+		}
+	
+		else
+			break;
+	
+	}
+
+}
+
+-----------------------------------------
+실전예제(334페이지)
+덧셈 과정을 보여주는 프로그램(양수따로, 음수따로)
+
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int sum;
+int plusIndex;
+int plusArr[256];
+
+int minusIndex;
+int minusArr[256];
+
+void add(int n)
+{
+
+    sum += n;
+
+    if (n > 0)
+    {
+        plusArr[plusIndex] = n;
+        plusIndex++;
+    }
+    else if (n < 0)
+    {
+        minusArr[minusIndex] = n;
+        minusIndex++;
+    }
+
+    if (plusIndex > 0)
+    {
+        printf("( %d ", plusArr[0]);
+        for (int i = 1; i < plusIndex; i++)
+            printf("+ %d ", plusArr[i]);
+
+        printf(")");
+    }
+
+    if (minusIndex > 0)
+    {
+        printf(" - ( %d ", -minusArr[0]);
+        for (int i = 1; i < minusIndex; i++)
+            printf("+ %d ", -minusArr[i]);
+
+        printf(")");
+    }
+
+    printf(" = %d\r\n", sum);
+}
+
+int main()
+{
+    while (1)
+    {
+        int n;
+        printf("더할 수를 입력하세요 > ");
+        scanf("%d", &n);
+        if (n)
+            add(n);
+        else
+            break;
+    }
+}
+
+-------------------------------------------
