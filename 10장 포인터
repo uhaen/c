@@ -1,0 +1,36 @@
+10-1(355페이지)
+int변수를 -1로 설정하기
+
+
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main()
+{
+	int a = 0;
+	char* p = (char*)&a;
+	*(p + 0) = 0b11111111;
+	*(p + 1) = 0b11111111;
+	*(p + 2) = 0b11111111;
+	*(p + 3) = 0b11111111;//int 변수 a는 4바이트인데, 각 1바이트를 가리키는 포인터들에 대하여 간접(*)연산자를 사용하여 8비트를 모두 1로 채울 경우 변수 a는 -1이됨.
+	printf("%d", a);
+}
+
+-------------------------------------
+실전예제 
+memset을 mymemset이란 함수로 내부구현
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+
+void* mymemset(void* dest, int c, size_t count)
+{
+	char* p = dest; //주소
+	for (int i = 0; i < count; i++) //count크기까지 c로 채움
+		p[i] = c;
+
+	return p;
+
+}
