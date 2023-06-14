@@ -17,6 +17,29 @@ int main()
 	printf("%d", a);
 }
 
+
+
+------------------------------------------------------
+10-2, 366페이지
+int arr[32]의 모든 요소를  -1로 설정하는 코드
+
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main()
+{
+	int a = 0;
+	int arr[32];
+	char* p = (char*)&a;
+
+	for (int i = 0; i < 32; i++)
+	{
+		*(p + i) = 0b11111111;
+	}
+
+	printf("%d", a);
+}
 -------------------------------------
 실전예제 
 memset을 mymemset이란 함수로 내부구현
