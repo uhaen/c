@@ -288,4 +288,69 @@ int main()
     }
 }
 
+
+
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int a;
+int sum;
+int plusindex;
+int minusindex;
+int plusarr[256];
+int minusarr[256];
+
+void add(int a)
+{
+	sum += a;
+	if (a > 0)
+	{
+		plusarr[plusindex] = a;
+		plusindex++;
+	}
+	else if (a < 0)
+	{
+		minusarr[minusindex] = a;
+		minusindex++;
+	}
+	if (plusindex > 0)
+	{
+		printf("(%d", plusarr[0]);
+		for (int i = 1; i < plusindex; i++)//arr[0]은 처음에 (%d)형태로 반환돼서 포문은 1부터 시작
+			printf("+ %d", plusarr[i]);
+		printf(")");
+	}
+
+	if (minusindex > 0)
+	{
+		printf("- (%d", -minusarr[0]);
+		for (int i = 1; i < minusindex; i++)//arr[0]은 처음에 (%d)형태로 반환돼서 포문은 1부터 시작
+			printf("+ %d", -minusarr[i]);
+		printf(")");
+	}
+	printf("= %d", sum);
+
+}
+
+int main()
+{
+
+
+	while (1)
+	{
+		printf("더할수를 입력하시오");
+		scanf("%d", &a);
+
+		if (a != 0)
+		{
+			add(a);
+		}
+
+		else
+			break;
+
+	}
+
+}
 -------------------------------------------
